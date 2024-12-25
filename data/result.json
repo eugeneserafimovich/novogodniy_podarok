@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Класс-ИКС",
+        "weight": 300,
+        "sugar_content": 30
+    },
+    {
+        "name": "Пчелки",
+        "weight": 60,
+        "sugar_content": 35
+    },
+    {
+        "name": "Ириска",
+        "weight": 40,
+        "sugar_content": 35
+    }
+]
