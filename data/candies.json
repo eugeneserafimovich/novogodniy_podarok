@@ -38,5 +38,20 @@
         "name": "Класс-ИКС",
         "weight": 300,
         "sugar_content": 30
+    },
+    {
+        "name": "Конфета_1",
+        "weight": 1000,
+        "sugar_content": 30
+    },
+    {
+        "name": "Конфета_2",
+        "weight": 100,
+        "sugar_content": 30
+    },
+    {
+        "name": "Конфета_3",
+        "weight": 500,
+        "sugar_content": 30
     }
 ]

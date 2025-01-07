@@ -34,14 +34,17 @@ def delete_candy():
     for idx, candy in enumerate(candies_data, start=1):
         print(f"{idx}. {candy['name']} (Вес: {candy['weight']} г, Сахар: {candy['sugar_content']} г)")
 
-    choice = int(input("\nВведите номер конфеты для удаления: ")) - 1
+    try:
+        choice = int(input("\nВведите номер конфеты для удаления: ")) - 1
+        if 0 <= choice < len(candies_data):
+            removed_candy = candies_data.pop(choice)
+            write_json(CANDIES_FILE, candies_data)
+            print(f"Конфета '{removed_candy['name']}' успешно удалена!")
+        else:
+            print("Некорректный выбор. Попробуйте снова.")
+    except ValueError:
+        print("Ошибка: пожалуйста, введите корректный номер конфеты.")
 
-    if 0 <= choice < len(candies_data):
-        removed_candy = candies_data.pop(choice)
-        write_json(CANDIES_FILE, candies_data)
-        print(f"Конфета '{removed_candy['name']}' успешно удалена!")
-    else:
-        print("Некорректный выбор. Попробуйте снова.")
 
 
 def show_candies():

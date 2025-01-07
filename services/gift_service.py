@@ -5,19 +5,19 @@ class GiftService:
         self.candies = candies
 
     def create_gift(self, target_weight):
-        candies_in_gift = []
-        current_weight = 0
+        dp = [float('inf')] * (target_weight + 1)
+        dp[0] = 0  # Для веса 0 не требуется конфет
 
-        self.candies.sort(key=lambda c: c.weight, reverse=True)
-        for candy in self.candies:
-            while current_weight + candy.weight <= target_weight:
-                candies_in_gift.append(candy)
-                current_weight += candy.weight
+        combinations = {0: []}
 
-        if current_weight != target_weight:
-            return None  # Оброботка, невозможно собрать подарок
+        for weight in range(1, target_weight + 1):
+            for candy in self.candies:
+                if weight >= candy.weight:
+                    if dp[weight - candy.weight] + 1 < dp[weight]:
+                        dp[weight] = dp[weight - candy.weight] + 1
+                        combinations[weight] = combinations[weight - candy.weight] + [candy]
 
-        return candies_in_gift
+        return combinations.get(target_weight, None)
 
     def sort_by_total_weight(self, gift):
         return sorted(gift, key=lambda c: c.weight)
